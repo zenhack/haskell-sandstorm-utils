@@ -1,0 +1,64 @@
+cabal-version:       2.2
+name:                sandstorm-utils
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/zenhack/haskell-sandstorm-utils
+license: Apache-2.0
+license-file:        LICENSE
+author:              Ian Denhardt
+maintainer:          ian@zenhack.net
+copyright:           2020 Ian Denhardt
+-- category:
+  -- Codec
+  -- Concurrency
+  -- Control
+  -- Data
+  -- Database
+  -- Development
+  -- Distribution
+  -- Game
+  -- Graphics
+  -- Language
+  -- Math
+  -- Network
+  -- Sound
+  -- System
+  -- Testing
+  -- Text
+  -- Web
+
+build-type:          Simple
+extra-source-files:
+    CHANGELOG.md
+  , README.md
+  , .gitignore
+
+source-repository head
+  type:     git
+  branch:   master
+  location: https://github.com/zenhack/haskell-sandstorm-utils
+
+common shared-opts
+  default-extensions:
+      NoImplicitPrelude
+    , OverloadedStrings
+  build-depends:
+      base ^>=4.13
+    , zenhack-prelude ^>=0.1
+    , data-default ^>=0.7.1
+    , network ^>=3.1
+    , capnp ^>=0.5
+    , sandstorm-capnp
+  default-language:    Haskell2010
+
+library
+  import: shared-opts
+  hs-source-dirs:      src
+  exposed-modules:
+    Sandstorm
+test-suite tests
+  import: shared-opts
+  type: exitcode-stdio-1.0
+  hs-source-dirs: tests
+  main-is: Main.hs
